@@ -1,0 +1,21 @@
+{
+  "name": "grpc-demo-drawing-proxy",
+  "version": "1.0.0",
+  "description": "Proxy requests between golang grpc server and vuejs ui",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Noah Kreiger",
+  "license": "MIT",
+  "dependencies": {
+    "@grpc/grpc-js": "^0.7.4",
+    "@grpc/proto-loader": "^0.5.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^3.22.0",
+    "morgan": "^1.10.0",
+    "socket.io": "^2.3.0"
+  }
+}

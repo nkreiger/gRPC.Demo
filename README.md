@@ -1,6 +1,6 @@
 # gRPC Demo
 
-Leverage gRPC's powerful bidirectional streaming capabilities with a simple Python drawing app and GoLang backend service.
+Leverage gRPC's powerful bidirectional streaming capabilities with a simple Python drawing app and GoLang backend service. Moreover, leverage the golang backend capabilities with a VueJS UI and an express proxy server utilizing sockets.
 
 <img src="assets/demo.gif" alt="demo gif" width="720px">
 
