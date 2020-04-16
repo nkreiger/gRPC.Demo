@@ -1,10 +1,10 @@
-# gRPC Web App Demo
+# gRPC Demo
 
-Leverage gRPC's powerful bidirectional streaming capabilities with a simple gRPC Golang Service consumed by a NodeJS Client proxying the stream to a Progressive Web App build in VueJS.
+Leverage gRPC's powerful bidirectional streaming capabilities with a simple Python drawing app and GoLang backend service. Moreover, leverage the golang backend capabilities with a VueJS UI and an express proxy server utilizing sockets.
 
-<img src="./assets/demo.gif" alt="demo gif" width="720px">
+<img src="../assets/demo.gif" alt="demo gif" width="720px">
 
-The front-end VueJS application streams the mouse X and Y coordinates via Sockets.io to the backend `proxy` client, which bidirectionally streams the points to the `transform` service, flipping the coordinates along a horizontal axis, and streams them back to the front end service to be displayed.
+The front-end Python application streams the mouse X and Y coordinates via gRPC to the backend `transform` service, which flips the coordinates along a horizontal axis, and streams them back to the front end service to be displayed.
 
 The contract between services is defined in the `demo.proto` file, with `flip` being the lone RPC call, that both _receives_ and _returns_ a gRPC stream of `Point` messages.
 
