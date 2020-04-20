@@ -8,7 +8,7 @@
   },
   "author": "Noah Kreiger",
   "dependencies": {
-    "@grpc/grpc-js": "^0.7.4",
+    "@grpc/grpc-js": "^0.6.15",
     "@grpc/proto-loader": "^0.5.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",

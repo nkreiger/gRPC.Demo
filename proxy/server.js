@@ -15,7 +15,7 @@ app.use(helmet());
 // parse json bodies
 app.use(bodyParser.json());
 
-// enables cors
+// enable cors
 app.use(cors());
 
 // log http requests
@@ -26,30 +26,28 @@ app.use(morgan('combined'));
  */
 const port = process.env.PORT || 5000;
 http.listen(port);
-console.log("Server running on: ", port);
+console.log("Server running on:", port);
 
 /**
  * Socket
+ * Ping Pong with Grpc
+ * Ping pong with client
  */
 
 // create global grpc connection
 let grpc;
-
 try {
-    grpc = new grpc_client();
+    grpc = new grpc_client('localhost:9901');
 } catch(err) {
     console.log('Connection to grpc failed: ' + err);
 }
 
 // mirror socket
 io.of('/mirror').on('connection', (socket) => {
-    // create global variable to hold session
     let call;
 
-    // emit connection ui for debugging
     socket.emit('connected', socket.id);
 
-    // create stream and init session
     socket.on('createStream', () => {
         // open up stream and listener
         try {
@@ -67,7 +65,15 @@ io.of('/mirror').on('connection', (socket) => {
         }
     });
 
-    // send point
+    socket.on('endStream', () => {
+        // end stream
+        try {
+            call.end();
+        } catch(err) {
+            if (err) console.log('closing bidirectional stream failed: ', err);
+        }
+    });
+
     socket.on('sendPoint', (data) => {
         let req = {
             x: data.point.x,
@@ -82,15 +88,5 @@ io.of('/mirror').on('connection', (socket) => {
             if (err) console.log('sending point to grpc backend failed: ', err);
         }
 
-    });
-
-    // end stream
-    socket.on('endStream', () => {
-        // end stream
-        try {
-            call.end();
-        } catch(err) {
-            if (err) console.log('closing bidirectional stream failed: ' + err);
-        }
     });
 });

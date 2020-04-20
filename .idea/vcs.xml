@@ -2,5 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/grpc.demo.drawingui" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/grpc.demo.transformservice" vcs="Git" />
   </component>
 </project>

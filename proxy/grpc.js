@@ -3,7 +3,7 @@ const grpc = require('@grpc/grpc-js');
 const protoLoader = require('@grpc/proto-loader');
 
 class grpc_client {
-    constructor() {
+    constructor(opts) {
         // initialize client
         const packageDefinition = protoLoader.loadSync(
             PROTO_PATH,
@@ -15,7 +15,7 @@ class grpc_client {
                 oneofs: true
             });
         const protoDescriptor = grpc.loadPackageDefinition(packageDefinition).demo;
-        this.client = new protoDescriptor.Transform('localhost:9091', grpc.credentials.createInsecure());
+        this.client = new protoDescriptor.Transform(opts, grpc.credentials.createInsecure());
     }
 
     /**
